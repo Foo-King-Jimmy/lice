@@ -1,0 +1,33 @@
+
+# clear && ls -al .
+# cd ~/dev-lice/
+# mv 'Easiest way to compile Linux kernel from source - PCsuggest.html' Compile_Linux.htm
+##  Read this article from Arnab Satapathi on PCsuggest.com!
+##  Thx Arnab!
+
+# ls -al ./linux-5.8.14.tar.xz
+tar -xf ./linux-5.8.14.tar.xz
+# rm ./linux-5.8.14.tar.xz
+cd ./linux-5.8.14/
+
+## http://tinycorelinux.net/11.x/x86_64/release/src/kernel/
+## http://tinycorelinux.net/11.x/x86_64/release/src/kernel/config-5.4.3-tinycore64
+cp ../config-5.4.3-tinycore64 ./.config
+##  I needed to install this too in order to run 'make xconfig':
+# sudo apt-get install pkg-config
+make xconfig
+##  Do the configuration here and now.
+
+##  Configuration finished.
+##  I also needed this in order to run 'make':
+# sudo apt-get install libelf-dev
+# # sudo apt-get install libelf-devel
+# # sudo apt-get install elfutil-libelf-devel
+# make help
+# make help | more
+make vmlinux
+# ls -al ./vmlinux
+make bzImage
+cp arch/x86/boot/bzImage ./vmlinuz
+# ls -al ./vmlinuz
+
