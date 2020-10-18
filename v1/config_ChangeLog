@@ -1,0 +1,127 @@
+
+-----------------------------------------------------------------
+START:
+-----------------------------------------------------------------
+> in (last) Kernel Testing and Coverage > uncheck Runtime Testing
+> in (last) Kernel Testing and Coverage is_DONE
+> in (last) Kernel hacking > in Generic Kernel Debugging Instruments > uncheck/no need for Debug Filesystem
+> in (last) Kernel hacking > in Generic Kernel Debugging Instruments > uncheck/no need for Magic SysRq key
+> in (last) Kernel hacking > in printk and dmesg options > quiet console loglevel 4->3
+> in (last) Kernel hacking > in printk and dmesg options > Default message loglevel 4->3
+> in (last) Kernel hacking > in printk and dmesg options > Default console loglevel 7->4
+> in (last) Kernel hacking > allow physical mem access by uncheck Filter access to /dev/mem
+> in (last) Kernel hacking is_DONE
+-----------------------------------------------------------------
+> in Device Drivers > uncheck *ALL* Sound card support, is_DONE
+! SAVING ! : config-00
+> Menory Management options no-change is_DONE
+> in Executable file formats uncheck Enable core dump support
+> Executable file formats is_DONE
+: FROM:Menory Management TO:General architecture-dependent options  is_DONE
+> Virtualization uncheck *ALL* and is_DONE
+? in Firmware Drivers > ? in EFI (...) may have options to uncheck ...
+? in Powermanagement and ACPI options > ? in CPU Frequency scaling > ? uncheck Intel-related options (leave only AMD)
+> in Powermanagement and ACPI options > ACPI (...) Support > uncheck battery-related options (2: Battery + Smart Battery System)
+? in Powermanagement and ACPI options ? uncheck Intel-related options
+> in Powermanagement and ACPI options uncheck Hibernation
+? in Processor type and features > ? in Performance monitoring > ? uncheck Intel-related options
+> in Processor type and features > in Linux guest support uncheck *ALL* and is_DONE
+? in Processor type and features ? may uncheck Intel-related and customize to (only) AMD processor
+> in (first) General setup > in Configure standard kernel features (expert users) > (only) uncheck Enable PC-Speaker support
+> in (first) General setup > in Configure standard kernel features (expert users) is_DONE
+! SAVING ! : config-01
+> in (first) General setup Compiler optimization level changed to -O2 Optimize for performance
+> in (first) General setup Initial RAM filesystem and ... support only to support gzip (not XZ, etc.)
+> in (first) General setup Preemption Model changed to (Server) No Forced Preemption
+# https://serverfault.com/q/69998
+> in (first) General setup Default hostname changed from box to server
+? in (first) General setup ? Default init path can be set
+> in (first) General setup Local version - append ... changed from "-tinycore64" to "-jjcustom_x64"
+> (first) General setup is_DONE
+! SAVING ! : config-02
+> in Networking support > Networking options > disabled *ALL* Bluetooth subsystem support and is_DONE
+> in Networking support > Networking options > disabled *ALL* Amateur Radio support and is_DONE
+> in Networking support > Networking options > under Wireless section RF switch subsystem support *ALL* unchecked and is_DONE
+> in Networking support > Networking options > under Wireless section Inter-FE based ... is left unchanged { in . (dot) state }
+> in Networking support > Networking options > under Wireless section WiMAX Wireless Broadband support is *ALL* unchecked and is_DONE
+> in Networking support > Networking options > Wireless is *ALL* unchecked and is_DONE
+: FROM:Networking//Multiprotocol Label Switching TO:Inter-FE based on IETF ForCES ...  is_DONE
+! SAVING ! : config-03
+-----------------------------------------------------------------
+> in Device Drivers > NVME Support *ALL* unchecked and is_DONE
+> in Device Drivers > in Network device support > Wireless LAN *ALL* unchecked and is_DONE
+> in Device Drivers > in Network device support > USB Network Adapters *ALL* unchecked and is_DONE
+? in Device Drivers > ? in Block devices > ? Packet writing on CD/DVD ... ?
+? in Device Drivers > ? in Character devices > ? in Hardware Random Number Generator Core support only leave AMD on ?
+! SAVING ! : config-04
+-----------------------------------------------------------------
+> in File systems > Network File Systems *ALL* unchecked and is_DONE
+> in File systems > CD-ROM/DVD Filesystems *ALL* unchecked and is_DONE
+> in File systems > DOS/FAT/EXFAT/NT Filesystems except VFAT everything else unchecked and is_DONE
+> in File systems > Pseudo filesystems OK as it is and is_DONE
+> in File systems > Miscellaneous filesystems > added/removed changes (added squashfs xattr, removed compression methods, other fs, is_DONE
+> in File systems > Native language support Leave as it is and is_DONE
+! VFAT in Filesystems -> implies -> codepage 437 + iso8859-1 => for Native Language support in File systems
+> File systems only use/apply Ext2 with extended attributes (xattr) and is_DONE
+> File systems is_DONE
+! SAVING ! : config-05
+-----------------------------------------------------------------
+> in Device Drivers > in Graphics support > uncheck Bootup logo and is_Done
+? in Cryptographic API > ? in Hardware crypto devices > ? uncheck all non-AMD feature ?
+> in Device Drivers > in Graphics support > in Backlight & LCD device support some dots taken away
+! SAVING ! : config-06
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+braver customization: -> no Intel, only AMD, cutting off devices (Ethernets), etc.:
+-----------------------------------------------------------------
+> in Device Drivers > in SCSI device support > uncheck Macintosh device drivers and is_DONE
+> in Device Drivers > in Network device support > Ethernet driver support > unchecked *ALL* except CONFIG_E1000E and is_DONE
+> in Device Drivers > in Network device support > in PHY Device support and infrastructure > unchecked *ALL* except Intel (2) dots and MDIO Bus/PHY ... and is_DONE
+> in Device Drivers > in Multimedia support > in Media drivers > unchecked *ALL* Media USB Adapters
+> in Device Drivers > in Multimedia support > Media drivers unchecked/disabled *ALL* and is_DONE
+> in Device Drivers > unchecked Platform support for Mellanox hardware and is_DONE
+> in Device Drivers > unchecked *ALL* i could in Platform support for Chrome hardware and is_DONE
+> in Device Drivers > uncheck *ALL* in VHOST drivers and is_DONE
+> in Device Drivers > uncheck *ALL* in Virtio drivers and is_DONE
+> in Device Drivers > uncheck *ALL* in Virtualization drivers and is_DONE
+! SAVING ! : config-07
+> in Device Drivers > IEEE 1394 (FireWire) support uncheck *ALL* and is_DONE
+> in Device Drivers > SCSI device support uncheck [ RAID Transport Class, SCSI CDROM support, SCSI tape support ] and is_DONE
+> in Device Drivers > SCSI device support > SCSI Transports some unchecks and is_DONE
+> in Device Drivers > Multiple devices driver support (RAID and LVM) uncheck *ALL* and is_DONE
+> in Processor type and features > in Performance monitoring > unchecked Intel-related options and is_DONE
+> Processor type and features > uncheck Intel related options + set Processor family to Opteron/Athlon64/Hammer/K8, and not Generic-x86-64 and is_DONE
+> in Powermanagement and ACPI options > in CPU Frequency scaling > unchecked (1) Intel related option and is_DONE
+> Powermanagement and ACPI options uncheck (1) Intel related option and is_DONE
+> in Cryptographic API > in Hardware crypto devices > uncheck all non-AMD feature and is_DONE
+> in Device Drivers > in Character devices > in Hardware Random Number Generator Core support uncheck non-AMD options and is_DONE
+> in Device Drivers > in Block devices > uncheck some options eg. [ Packet writing on CD/DVD, vendor-specific Flash, SSD support ] and is_DONE
+-----------------------------------------------------------------
+! SAVING ! : config-08  and  is_DONE
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+2020.10.17 13:30
+# go Swap-less:
+> in (first) General setup disabled swap by unchecking Enable anonymous paging (swap) ( CONFIG_SWAP)  - { swapless }
+> in (first) General setup selected Gzip compression for the kernel (vmlinuz) own compression
+> in (first) General setup selected -O2 compilation for performance
+> in (first) General setup changed linux string to -GKE.v1.x64      # or sg like that
+>
+>
+> in (first) General setup hard-coded init path to: /bin/init
+> in (last) Kernel hacking > ... > removed/unchecked verbose printf
+> in (last) Kernel hacking > ... > removed/unchecked warning on W+X (memory)pages on bootup
+> ... > removed *ALL* media (shit)
+> ... > removed *ALL* tablets, touchscreen, mouse, mice, joystick (media) stuff
+> {{ what I can remember now }}
+
+>
+>>
+>>> Compilation: 'make vmlinux', 'make bzImage'
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+ ??? HID ?
+ ??? Graphics ?
+ ??? in (first) General setup ? Default init path can be set
+-----------------------------------------------------------------
